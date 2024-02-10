@@ -685,7 +685,7 @@ while True:
     elif raindrop > fps:raindrop = float(fps)
     if layout < 27:layout = 27
     if length < 0:length = 0
-    if (clock_over or is_in_alarm) and over_time == -1:over_time = time.time()
+    if (clock_over or is_in_alarm) and over_time == -1:over_time = time.time() - 2/fps
     elif not (clock_over or is_in_alarm) and over_time != -1:over_time = -1
     
     if mode == "clock" and alarm_clock_str != "":
