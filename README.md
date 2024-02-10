@@ -1,2 +1,2 @@
-#Hackerclock
-##By Jack Peng
+# Hackerclock
+## By Jack Peng
