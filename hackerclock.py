@@ -695,12 +695,12 @@ while True:
     if clock_is_display:
         if (not clock_over and not is_in_alarm) or is_pausing:
             for i in range(8):number(now_str[i], clock_startX+number_position[i]*pixel_size, clock_startY, pygame.Color(255 if not menu_is_display else 127, 0, 0))
-        elif (clock_over or is_in_alarm) and time.time() - over_time - floor(time.time() - over_time) >= 0.5 and not is_pausing:
+        elif (clock_over or is_in_alarm) and (time.time() - over_time) %1 >= 0.5 and not is_pausing:
             if not is_beeping:
                 is_beeping = True
                 beep(763, 500)
             for i in range(8):number(now_str[i], clock_startX+number_position[i]*pixel_size, clock_startY, pygame.Color(255 if not menu_is_display else 127, 0, 0))
-        elif time.time() - over_time - floor(time.time() - over_time) < 0.5:
+        elif (time.time() - over_time) % 1 < 0.5:
             is_beeping = False
 
     for s in range(len(show)):
