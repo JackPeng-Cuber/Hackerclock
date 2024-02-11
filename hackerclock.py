@@ -643,7 +643,8 @@ while True:
         window.blit(textSurface, textSurface.get_rect(center=(window_width*(21/24), window_height*0.8)))
         pygame.display.update()
         continue
-    elif mode == "clock":now_str = time.ctime().split()[3]
+    elif mode == "clock":
+        if not is_in_alarm or (is_in_alarm and (time.time() - over_time) % 1 < 0.5):now_str = time.ctime().split()[3]
     elif mode == "positive timer":
         time_difference = time.time() - time_start
         now_str = str(floor(time_difference)//3600).zfill(2) + ":" + str(floor(time_difference) % 3600 // 60).zfill(2) + ":" + str(floor(time_difference) % 60).zfill(2)
@@ -685,7 +686,7 @@ while True:
     elif raindrop > fps:raindrop = float(fps)
     if layout < 27:layout = 27
     if length < 0:length = 0
-    if (clock_over or is_in_alarm) and over_time == -1:over_time = time.time() - 2/fps
+    if (clock_over or is_in_alarm) and over_time == -1:over_time = time.time()
     elif not (clock_over or is_in_alarm) and over_time != -1:over_time = -1
     
     if mode == "clock" and alarm_clock_str != "":
